@@ -14,7 +14,7 @@ function App() {
         <div className="form-section">
 
           <div className="logo-container">
-            <img src={logo} alt="Supplyco Logo" className="logo" /> 
+            <img src={logo} alt="Supplyco Logo" className="logo" />
             <h2>Welcome back</h2>
             <p>Sign in to continue to Supplyco Millers ERP</p>
           </div>
