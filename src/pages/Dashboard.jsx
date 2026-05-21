@@ -1,6 +1,10 @@
-import "../Dashboard.css";
-import logo from "../assets/logo.png";
+
 function Dashboard() {
   return (
-    <div className="dashboard-container">   
+    <div className="h-screen flex items-center justify-center text-4xl font-bold">
+      Dashboard
+    </div>
+  );
+}
 
+export default Dashboard;
