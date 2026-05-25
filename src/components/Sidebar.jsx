@@ -4,7 +4,8 @@ import {
   ShoppingCart, 
   TrendingUp, 
   ChevronDown, 
-  ChevronUp 
+  ChevronUp,
+  Circle // Added for sub-menu items
 } from "lucide-react";
 
 function Sidebar() {
@@ -13,6 +14,7 @@ function Sidebar() {
   return (
     <div className="w-[260px] bg-white border-r border-gray-200 h-full">
       <div className="p-5 space-y-4">
+        
         <div className="flex items-center gap-4 text-[#1e715b] font-medium cursor-pointer p-2 rounded-md hover:bg-[#edf7f4]">
           <LayoutDashboard size={22} />
           <span>Dashboard</span>
@@ -38,11 +40,11 @@ function Sidebar() {
           {isSalesOpen && (
             <div className="ml-10 mt-2 space-y-2 text-gray-500 text-sm animate-in fade-in slide-in-from-top-1 duration-200">
               <div className="flex items-center gap-3 cursor-pointer p-2 rounded-md hover:text-[#1e715b] hover:bg-gray-50">
-                <div className="w-2.5 h-2.5 border border-gray-400 rounded-full" />
+                <Circle size={10} strokeWidth={3} />
                 <span>Sales In</span>
               </div>
               <div className="flex items-center gap-3 cursor-pointer p-2 rounded-md hover:text-[#1e715b] hover:bg-gray-50">
-                <div className="w-2.5 h-2.5 border border-gray-400 rounded-full" />
+                <Circle size={10} strokeWidth={3} />
                 <span>Sales Out</span>
               </div>
             </div>

@@ -1,23 +1,26 @@
 import { useState } from 'react';
 import { Outlet } from 'react-router-dom';
+import { X } from 'lucide-react'; // Import the X icon
 import Sidebar from './Sidebar';
 import Navbar from './Navbar';
 import logo from "../assets/logo.png";
-import xIcon from "../assets/x.png"; 
 
 function Layout() {
   const [isSidebarOpen, setIsSidebarOpen] = useState(true);
 
   return (
     <div className="h-screen bg-[#f6f8fa] flex flex-col">
+      {/* Top Header */}
       <div className="flex h-[70px] border-b border-gray-200 bg-white shrink-0">
         
+        {/* Brand Area */}
         <div 
           onClick={() => !isSidebarOpen && setIsSidebarOpen(true)}
-          className={`w-[260px] flex items-center justify-between px-5 border-r border-gray-200 shrink-0 transition-colors ${!isSidebarOpen ? 'cursor-pointer hover:bg-gray-50' : ''}`}
+          className={`w-[260px] flex items-center justify-between px-5 shrink-0 transition-colors ${!isSidebarOpen ? 'cursor-pointer hover:bg-gray-50' : ''}`}
         >
-          <img src={logo} alt="Supplyco" className="h-[50px] w-auto object-contain" />
+          <img src={logo} alt="Supplyco" className="h-[70px] w-auto object-contain" />
           
+          {/* Close Icon Trigger */}
           {isSidebarOpen && (
             <button 
               onClick={(e) => { 
@@ -26,22 +29,23 @@ function Layout() {
               }}
               className="p-1 hover:bg-gray-100 rounded-full transition-colors"
             >
-              <img src={xIcon} alt="Close" className="h-[20px] w-[20px] object-contain opacity-50" />
+              <X size={20} className="text-gray-500" />
             </button>
           )}
         </div>
         
-
+        {/* Navbar */}
         <div className="flex-1">
           <Navbar />
         </div>
       </div>
 
+      {/* Main Content Area */}
       <div className="flex flex-1 overflow-hidden">
         {isSidebarOpen && <Sidebar />}
         
         <main className="flex-1 overflow-y-auto p-6">
-          <Outlet />
+          <Outlet /> 
         </main>
       </div>
     </div>

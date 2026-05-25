@@ -1,5 +1,4 @@
-import bell from "../assets/bell.png";
-import chevronDown from "../assets/chevron-down.png";
+import { Bell, ChevronDown } from "lucide-react"; // Import icons from library
 
 function Navbar() {
   return (
@@ -18,23 +17,19 @@ function Navbar() {
       </div>
 
       <div className="flex items-center gap-6">
-        <div className="relative cursor-pointer">
-          <img src={bell} alt="Notifications" className="h-[24px] w-[24px] object-contain" />
-          <div className="absolute -top-2 -right-2 h-5 w-5 rounded-full bg-red-500 text-white text-[11px] flex items-center justify-center font-bold">
-            9
-          </div>
+        {/* Bell Icon */}
+        <div className="relative cursor-pointer text-gray-600 hover:text-[#1e715b]">
+          <Bell size={24} strokeWidth={2} />
         </div>
 
+        {/* Profile */}
         <div className="flex items-center gap-3 cursor-pointer">
           <div className="h-10 w-10 rounded-full bg-[#1e715b] text-white flex items-center justify-center font-semibold">
             J
           </div>
           <span className="text-gray-700 font-medium">John Smith</span>
-          <img 
-            src={chevronDown} 
-            alt="Dropdown" 
-            className="h-[12px] w-[12px] object-contain opacity-60" 
-          />
+          {/* Chevron Icon */}
+          <ChevronDown size={16} className="text-gray-400" />
         </div>
       </div>
     </div>
