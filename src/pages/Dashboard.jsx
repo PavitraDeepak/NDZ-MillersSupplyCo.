@@ -2,7 +2,7 @@ import {ShoppingCart, TrendingUp, Users, DollarSign, Package, AlertTriangle} fro
 import {KpiCard} from "../components/KpiCard";
 import {PurchaseChart} from "../components/charts/PurchaseChart";
 import {SalesChart} from "../components/charts/salesChart";
-
+import {TransactionsTable} from "../components/TransactionsTable";
 const kpiData = [
   {title:"Today Purchase", amount:"₹2,45,680", sub:"15 transactions",icon:ShoppingCart, trend:"+12.5%", isPositive:true, color:"text-blue-600", bg:"bg-blue-50" },
   {title:"Sales Today", amount:"₹3,89,450", sub:"22 invoices",icon:TrendingUp, trend:"+8.2%", isPositive:true, color:"text-green-600", bg:"bg-green-50" },
@@ -37,6 +37,9 @@ function Dashboard() {
         <PurchaseChart data={purchaseData} />
         <SalesChart data={salesData} />
       </div>
+      <div className="mt-6">
+      <TransactionsTable ></TransactionsTable>
+    </div>
     </div>
   );
 }
