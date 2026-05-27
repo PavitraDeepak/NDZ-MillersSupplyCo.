@@ -1,15 +1,8 @@
-import React from 'react';
-import { CircleCheckBig, Clock } from 'lucide-react';
-export const transactionData = [
-  {code:'PUR-2024-001', name:'Hard Red Spring', type:'Purchase', unit:'10', branch:'Kochi Branch', billQty:'150', amount:'45680', date:'2026-05-07', status:'Completed'},
-  {code:'PUR-2024-001', name:'Hard Red Spring', type:'Sales', unit:'10', branch:'Kochi Branch', billQty:'150', amount:'45680', date:'2026-05-07', status:'Completed'},
-  {code:'PUR-2024-001', name:'Hard Red Spring', type:'Sales', unit:'10', branch:'Kochi Branch', billQty:'150', amount:'45680', date:'2026-05-07', status:'Completed'},
-  {code:'PUR-2024-001', name:'Hard Red Spring', type:'Purchase', unit:'10', branch:'Kochi Branch', billQty:'150', amount:'45680', date:'2026-05-07', status:'Completed'},
-  {code:'PUR-2024-001', name:'Hard Red Spring', type:'Purchase', unit:'10', branch:'Kochi Branch', billQty:'150', amount:'45680', date:'2026-05-07', status:'Pending'},
-  {code:'PUR-2024-001', name:'Hard Red Spring', type:'Sales', unit:'10', branch:'Kochi Branch', billQty:'150', amount:'45680', date:'2026-05-07', status:'Completed'}
-];
 
-export function TransactionsTable() {
+
+import { CircleCheckBig, Clock } from 'lucide-react';
+
+export function TransactionsTable({ data }) {
   return (
     <div className="bg-white p-6 rounded-lg border border-gray-200 shadow-sm">
       <h3 className="text-lg font-bold text-gray-800 mb-4">Recent Transactions</h3>
@@ -29,9 +22,8 @@ export function TransactionsTable() {
             </tr>
           </thead>
           <tbody className="bg-white divide-y divide-gray-200">
-            {transactionData.map((txn, index) => (
+            {data.map((txn, index) => (
               <tr key={index} className="hover:bg-gray-50 transition-colors">
-                {/* All these columns now use font-semibold to match Bill Qty */}
                 <td className="px-4 py-4 text-sm font-semibold text-gray-900">{txn.code}</td>
                 <td className="px-4 py-4 text-sm font-semibold text-gray-900">{txn.name}</td>
                 <td className="px-4 py-4 text-sm">
@@ -45,7 +37,6 @@ export function TransactionsTable() {
                 <td className="px-4 py-4 text-sm font-semibold text-gray-900">{txn.branch}</td>
                 <td className="px-4 py-4 text-sm font-semibold text-gray-900">{txn.billQty}</td>
                 
-                {/* Amount remains bold as it is a key financial figure */}
                 <td className="px-4 py-4 text-sm font-bold text-gray-900">
                   {Number(txn.amount).toLocaleString('en-IN', {
                     style: 'currency',
@@ -53,31 +44,18 @@ export function TransactionsTable() {
                     minimumFractionDigits: 0
                   })}
                 </td>
-
-                {/* Date formatted as YYYY-MM-DD */}
-                <td className="px-4 py-4 text-sm text-gray-500">
-                  {txn.date}
+                <td className="px-4 py-4 text-sm text-gray-500">{txn.date}</td>
+                <td className="px-4 py-4 text-sm">
+                  <span className={`inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[11px] font-semibold uppercase ${
+                    txn.status === 'Completed' ? 'bg-green-50 text-green-700' : 'bg-yellow-50 text-yellow-700'
+                  }`}>
+                    {txn.status === 'Completed' ? (
+                      <><CircleCheckBig size={14} /> <span>Completed</span></>
+                    ) : (
+                      <><Clock size={14} /> <span>Pending</span></>
+                    )}
+                  </span>
                 </td>
-
-<td className="px-4 py-4 text-sm">
-  <span className={`inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[11px] font-semibold uppercase ${
-    txn.status === 'Completed' 
-      ? 'bg-green-50 text-green-700' 
-      : 'bg-yellow-50 text-yellow-700'
-  }`}>
-    {txn.status === 'Completed' ? (
-      <>
-        <CircleCheckBig size={14} /> 
-        <span>Completed</span>
-      </>
-    ) : (
-      <>
-        <Clock size={14} /> 
-        <span>Pending</span>
-      </>
-    )}
-  </span>
-</td>
               </tr>
             ))}
           </tbody>

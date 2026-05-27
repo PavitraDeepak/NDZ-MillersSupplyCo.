@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { Outlet } from 'react-router-dom';
-import { X } from 'lucide-react'; // Import the X icon
+import { X } from 'lucide-react';
 import Sidebar from './Sidebar';
 import Navbar from './Navbar';
 import logo from "../assets/logo.png";
@@ -10,17 +10,13 @@ function Layout() {
 
   return (
     <div className="h-screen bg-[#f6f8fa] flex flex-col">
-      {/* Top Header */}
       <div className="flex h-[70px] border-b border-gray-200 bg-white shrink-0">
         
-        {/* Brand Area */}
         <div 
           onClick={() => !isSidebarOpen && setIsSidebarOpen(true)}
-          className={`w-[260px] flex items-center justify-between px-5 shrink-0 transition-colors ${!isSidebarOpen ? 'cursor-pointer hover:bg-gray-50' : ''}`}
-        >
+          className={`w-[260px] flex items-center justify-between px-5 shrink-0 transition-colors ${!isSidebarOpen ? 'cursor-pointer hover:bg-gray-50' : ''}`}>
           <img src={logo} alt="Supplyco" className="h-[70px] w-auto object-contain" />
           
-          {/* Close Icon Trigger */}
           {isSidebarOpen && (
             <button 
               onClick={(e) => { 
@@ -34,13 +30,11 @@ function Layout() {
           )}
         </div>
         
-        {/* Navbar */}
-        <div className="flex-1">
+          <div className="flex-1">
           <Navbar />
         </div>
       </div>
 
-      {/* Main Content Area */}
       <div className="flex flex-1 overflow-hidden">
         {isSidebarOpen && <Sidebar />}
         

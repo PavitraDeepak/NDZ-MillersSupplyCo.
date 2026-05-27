@@ -1,20 +1,18 @@
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import Layout from './components/Layout'; // The "Wrapper"
+import { Routes, Route } from 'react-router-dom';
+import Layout from './components/Layout';
 import Login from './pages/Login';
-import Dashboard from './pages/Dashboard'; // The "Content"
+import Dashboard from './pages/Dashboard';
+import Purchase from './pages/Purchase';
 
 function App() {
   return (
-    <Router>
-      <Routes>
-        <Route path="/" element={<Login />} />
-        
-        {/* Layout wraps all protected dashboard pages */}
-        <Route element={<Layout />}>
-          <Route path="/dashboard" element={<Dashboard />} />
-        </Route>
-      </Routes>
-    </Router>
+    <Routes>
+      <Route path="/" element={<Login />} />
+      <Route element={<Layout />}>
+        <Route path="/dashboard" element={<Dashboard />} />
+        <Route path="/purchase" element={<Purchase />} />
+      </Route>
+    </Routes>
   );
 }
 
