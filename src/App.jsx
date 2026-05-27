@@ -3,6 +3,7 @@ import Layout from './components/Layout';
 import Login from './pages/Login';
 import Dashboard from './pages/Dashboard';
 import Purchase from './pages/Purchase';
+import NewPurchaseEntry from './pages/NewPurchaseEntry';
 
 function App() {
   return (
@@ -11,6 +12,7 @@ function App() {
       <Route element={<Layout />}>
         <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/purchase" element={<Purchase />} />
+        <Route path="/purchase/new" element={<NewPurchaseEntry />} /> 
       </Route>
     </Routes>
   );
