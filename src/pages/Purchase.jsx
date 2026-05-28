@@ -3,7 +3,6 @@ import { useNavigate } from 'react-router-dom';
 import { ShoppingCart, Package, Clock, AlertCircle, Plus, Search, Filter } from 'lucide-react';
 import { ItemsTable } from '../components/ItemsTable';
 
-// Reusable KPI Card Component
 const SummaryCard = ({ title, value, sub, icon: Icon, colorClass }) => (
   <div className="bg-white p-6 rounded-xl border border-gray-200 shadow-sm flex justify-between items-start">
     <div>
