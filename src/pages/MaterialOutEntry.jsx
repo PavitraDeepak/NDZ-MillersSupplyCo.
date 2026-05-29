@@ -31,7 +31,7 @@ const SummaryRow = ({ label, value, isGreen, isRed }) => (
   </div>
 );
 
-function NewPurchaseEntry() {
+function MaterialOutEntry() {
   const [selectedFile, setSelectedFile] = useState(null);
   const handleFileChange = (e) => { if (e.target.files) setSelectedFile(e.target.files[0]); };
 
@@ -48,15 +48,15 @@ function NewPurchaseEntry() {
     { label: "Incharge", required: true },
   ];
 
-  const headers = ["ITEM CODE", "ITEM NAME", "BATCH NO.", "BATCH EXP. DATE", "BATCH MRP", "BATCH OLD MRP", "ITEM STOCK QTY", "FOR BRANCH", "SUPPLY BRANCH"];
+  const headers = ["#", "ITEM CODE", "ITEM NAME", "BATCH NO.", "BATCH EXP. DATE", "BATCH MRP", "BATCH OLD MRP", "ITEM STOCK QTY", "FOR BRANCH", "SUPPLY BRANCH"];
   const items = [1, 2, 3];
 
   return (
-    <div className="p-8 min-h-screen bg-gray-50">
+    <div className="p-2 min-h-screen bg-gray-50">
       <div className="max-w-7xl mx-auto grid grid-cols-12 gap-8">
 
         <div className="col-span-12 lg:col-span-8 bg-white p-6 rounded-lg border border-gray-200 shadow-sm">
-          <h3 className="font-bold text-lg mb-6">Purchase Details</h3>
+          <h3 className="font-bold text-lg mb-6">Material Out Entry  </h3>
           <div className="mb-8">
             <label className="w-72 border-2 border-dashed border-gray-300 rounded-lg p-4 flex items-center gap-4 cursor-pointer hover:border-[#1e715b]">
               <div className="text-[#1e715b] bg-emerald-50 p-2 rounded-md"><Upload size={20} /></div>
@@ -138,6 +138,7 @@ function NewPurchaseEntry() {
               <tbody className="divide-y divide-gray-50">
                 {items.map((row) => (
                   <tr key={row}>
+                    <td className="py-4 text-sm text-gray-600 px-2">{row}</td>
                     <td className="py-2 px-2"><input className="w-28 p-2 border border-gray-200 rounded text-sm" defaultValue="PUR-2024-001" /></td>
                     <td className="py-2 px-2"><input className="w-32 p-2 border border-gray-200 rounded text-sm" defaultValue="Hard Red Spring" /></td>
                     <td className="py-2 px-2"><input className="w-16 p-2 border border-gray-200 rounded text-sm" defaultValue="10" /></td>
@@ -160,4 +161,4 @@ function NewPurchaseEntry() {
   );
 }
 
-export default NewPurchaseEntry;
+export default MaterialOutEntry;

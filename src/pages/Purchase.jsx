@@ -29,23 +29,21 @@ function Purchase() {
       </div>
 
       <div className="bg-white p-4 rounded-xl border border-gray-200 shadow-sm flex justify-between items-center">
-        <div className="relative flex-1 max-w-2xl bg-[#f8f9fa] rounded-lg">
-          <Search className="absolute left-3 top-3 text-gray-500" size={18} />
+        <div className="relative flex-1 max-w-3xl bg-[#f8f9fa] rounded-lg">
+          <Search className="absolute left-3 top-3 text-gray-400" size={18} />
           <input 
             type="text" 
-            placeholder="Search by PO number, supplier, bill no..." 
-            className="w-full pl-10 pr-4 py-2.5 border border-gray-200 rounded-lg text-sm outline-none focus:border-[#1e715b]"
-          />
+            placeholder="Search by voucher number or party name..." 
+            className="w-full pl-10 pr-4 py-2.5 bg-white border border-gray-200 rounded-lg outline-none focus:border-[#1e715b] transition-colors text-sm"/>
         </div>
-        
-        <div className="flex gap-65">
-          <button className="flex items-center gap-2 px-4 py-2.5 border border-gray-200 rounded-lg text-sm font-medium text-gray-600 hover:bg-gray-50">
-            <Filter size={18} /> Filters
+
+        <div className="flex gap-3">
+          <button className="flex items-center gap-2 px-4 py-2.5 bg-white border border-gray-200 rounded-lg text-gray-600 hover:bg-gray-50 transition-colors text-sm font-medium">
+            <Filter size={16} /> Filters
           </button>
           <button 
             onClick={() => navigate('/purchase/new')}
-            className="flex items-center gap-2 px-4 py-2.5 bg-[#1e715b] text-white rounded-lg text-sm font-semibold hover:bg-[#185d4b] transition-all"
-          >
+            className="flex items-center gap-2 px-4 py-2.5 bg-[#1e715b] text-white rounded-lg text-sm font-semibold hover:bg-[#185d4b] transition-all">
             <Plus size={18} /> New Purchase
           </button>
         </div>

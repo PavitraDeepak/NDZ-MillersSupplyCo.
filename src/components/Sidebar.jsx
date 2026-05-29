@@ -22,7 +22,7 @@ function Sidebar() {
   return (
     <div className="w-[260px] bg-white border-r border-gray-200 h-full">
       <div className="p-5 space-y-2">
-        
+
         <NavLink to="/dashboard" className={getLinkClass}>
           <LayoutDashboard size={20} />
           <span>Dashboard</span>
