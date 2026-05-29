@@ -23,7 +23,7 @@ function Layout() {
                 e.stopPropagation(); 
                 setIsSidebarOpen(false); 
               }}
-              className="p-1 hover:bg-gray-100 rounded-full transition-colors"
+              className="p-1 hover:bg-gray-100 rounded transition-colors"
             >
               <X size={20} className="text-gray-500" />
             </button>

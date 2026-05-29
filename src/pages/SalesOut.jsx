@@ -1,15 +1,14 @@
 import { FileText, Box, DollarSign, Clock, Search, Filter, Plus } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 
-// FIXED: Renamed 'icon: Icon' to 'icon' so we can render it directly
 const SummaryCard = ({ title, value, icon, colorClass }) => (
-  <div className="bg-white p-5 rounded-xl border border-gray-200 shadow-sm flex items-center justify-between flex-1">
+  <div className="bg-white p-5 rounded border border-gray-200 shadow-sm flex items-center justify-between flex-1">
     <div>
       <p className="text-xs text-gray-500 uppercase font-medium">{title}</p>
       <h3 className="text-2xl font-bold mt-1">{value}</h3>
     </div>
     {/* Renders the icon directly as JSX */}
-    <div className={`p-3 rounded-lg ${colorClass}`}>
+    <div className={`p-3 rounded ${colorClass}`}>
       {icon}
     </div>
   </div>
@@ -23,37 +22,36 @@ const SalesOut = () => {
   return (
     <div className="font-sans">      
       <div className="flex gap-6 mb-8">
-        {/* Pass icon as JSX element */}
         <SummaryCard title="Total Entries" value="4" icon={<FileText size={20} />} colorClass="bg-blue-100 text-blue-600" />
         <SummaryCard title="Total Quantity" value="650 MT" icon={<Box size={20} />} colorClass="bg-violet-100 text-violet-600" />
         <SummaryCard title="Total Amount" value="₹8,125" icon={<DollarSign size={20} />} colorClass="bg-green-100 text-green-600" />
         <SummaryCard title="Pending Approval" value="1" icon={<Clock size={20} />} colorClass="bg-amber-100 text-amber-600" />
       </div>
 
-      <div className="flex items-center gap-4 bg-white p-4 rounded-xl border border-gray-200 shadow-sm mb-6">
+      <div className="flex items-center gap-4 bg-white p-4 rounded border border-gray-200 shadow-sm mb-6">
         <div className="relative flex-1">
           <Search className="absolute left-3 top-3 text-gray-400" size={18} />
           <input 
             type="text" 
             placeholder="Search by voucher number or party name..." 
-            className="w-full pl-10 pr-4 py-2.5 bg-white border border-gray-200 rounded-lg outline-none focus:border-[#1e715b] transition-colors text-sm"
+            className="w-full pl-10 pr-4 py-2.5 bg-white border border-gray-200 rounded outline-none focus:border-[#1e715b] transition-colors text-sm"
           />
         </div>
 
         <div className="flex gap-3">
-          <button className="flex items-center gap-2 px-4 py-2.5 bg-white border border-gray-200 rounded-lg text-gray-600 hover:bg-gray-50 transition-colors text-sm font-medium">
+          <button className="flex items-center gap-2 px-4 py-2.5 bg-white border border-gray-200 rounded text-gray-600 hover:bg-gray-50 transition-colors text-sm font-medium">
             <Filter size={16} /> Filters
           </button>
           <button 
             onClick={() => navigate('/sales/out/new')}  
-            className="flex items-center gap-2 px-4 py-2.5 bg-[#1e715b] text-white rounded-lg hover:bg-[#185d4b] transition-colors text-sm font-medium"
+            className="flex items-center gap-2 px-4 py-2.5 bg-[#1e715b] text-white rounded hover:bg-[#185d4b] transition-colors text-sm font-medium"
           >
             <Plus size={16} /> New Entry
           </button>
         </div>
       </div>
 
-      <div className="bg-white rounded-xl border border-gray-200 shadow-sm p-6">
+      <div className="bg-white rounded border border-gray-200 shadow-sm p-6">
         <h3 className="font-bold text-lg mb-6">Items Details</h3>
         <div className="overflow-x-auto">
           <table className="w-full text-left border-collapse">

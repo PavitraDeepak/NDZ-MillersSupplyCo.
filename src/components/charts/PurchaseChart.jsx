@@ -15,7 +15,7 @@ const CustomTooltip=({active, payload, label})=>{
 
 export function PurchaseChart({ data }) {
     return (
-        <div className="bg-white p-4 rounded-lg border border-gray-200 shadow-sm">
+        <div className="bg-white p-4 rounded border border-gray-200 shadow-sm">
             <h3 className="text-lg font-semibold text-gray-700 mb-4">Purchase Trends</h3>
             <ResponsiveContainer width="100%" height={200}>
                 <BarChart data={data} margin={{ top: 20, right: 30, left: 50, bottom: 5 }}>

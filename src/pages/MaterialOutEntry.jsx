@@ -58,8 +58,8 @@ function MaterialOutEntry() {
         <div className="col-span-12 lg:col-span-8 bg-white p-6 rounded-lg border border-gray-200 shadow-sm">
           <h3 className="font-bold text-lg mb-6">Material Out Entry  </h3>
           <div className="mb-8">
-            <label className="w-72 border-2 border-dashed border-gray-300 rounded-lg p-4 flex items-center gap-4 cursor-pointer hover:border-[#1e715b]">
-              <div className="text-[#1e715b] bg-emerald-50 p-2 rounded-md"><Upload size={20} /></div>
+            <label className="w-72 border-2 border-dashed border-gray-300 rounded p-4 flex items-center gap-4 cursor-pointer hover:border-[#1e715b]">
+              <div className="text-[#1e715b] bg-emerald-50 p-2 rounded"><Upload size={20} /></div>
               <div className="flex flex-col">
                 <h3 className="text-sm font-semibold text-gray-800">Upload Purchase Order</h3>
                 <p className="text-[10px] text-gray-400">Upload DOC, PDF</p>
@@ -67,7 +67,7 @@ function MaterialOutEntry() {
               <input type="file" className="hidden" onChange={handleFileChange} accept=".pdf,.doc,.docx" />
             </label>
             {selectedFile && (
-              <div className="mt-2 text-sm text-[#1e715b] flex items-center justify-between bg-emerald-50 p-3 rounded-lg w-72">
+              <div className="mt-2 text-sm text-[#1e715b] flex items-center justify-between bg-emerald-50 p-3 rounded w-72">
                 <span className="truncate">{selectedFile.name}</span>
                 <button onClick={() => setSelectedFile(null)}><X size={16} /></button>
               </div>
@@ -78,11 +78,11 @@ function MaterialOutEntry() {
           </div>
           <div className="mt-6">
             <label className="text-sm font-medium text-gray-700">Remarks / Notes</label>
-            <textarea rows="4" className="w-full mt-1.5 p-3 resize-none border border-gray-200 rounded-lg outline-none focus:border-[#1e715b]" placeholder="Enter any additional notes or remarks..." />
+            <textarea rows="4" className="w-full mt-1.5 p-3 resize-none border border-gray-200 rounded outline-none focus:border-[#1e715b]" placeholder="Enter any additional notes or remarks..." />
           </div>
         </div>
 
-        <div className="col-span-12 lg:col-span-4 bg-white p-6 rounded-lg border border-gray-200 shadow-sm flex flex-col justify-between">
+        <div className="col-span-12 lg:col-span-4 bg-white p-6 rounded border border-gray-200 shadow-sm flex flex-col justify-between">
           
           <div>
             <h3 className="font-bold text-lg mb-6">Order Summary</h3>
@@ -111,10 +111,10 @@ function MaterialOutEntry() {
           </div>
 
           <div className="flex flex-col gap-2 pt-4">
-            <button className="w-full py-2.5 flex items-center justify-center gap-2 border border-gray-200 rounded-lg text-gray-700 hover:bg-gray-50 transition-colors">
+            <button className="w-full py-2.5 flex items-center justify-center gap-2 border border-gray-200 rounded text-gray-700 hover:bg-gray-50 transition-colors">
               <Save size={18} /> Save as Draft
             </button>
-            <button className="w-full py-2.5 flex items-center justify-center gap-2 bg-[#1e715b] text-white rounded-lg hover:bg-[#185d4b] transition-colors">
+            <button className="w-full py-2.5 flex items-center justify-center gap-2 bg-[#1e715b] text-white rounded hover:bg-[#185d4b] transition-colors">
               <Send size={18} /> Submit for Approval
             </button>
           </div>
@@ -123,7 +123,7 @@ function MaterialOutEntry() {
         <div className="col-span-12 bg-white p-6 rounded-xl border border-gray-200 shadow-sm">
           <div className="flex justify-between items-center mb-6">
             <h3 className="font-bold text-lg">Item Details</h3>
-            <button className="bg-[#1e715b] text-white px-4 py-2 rounded-lg flex items-center gap-2 text-sm hover:bg-[#185d4b]">
+            <button className="bg-[#1e715b] text-white px-4 py-2 rounded flex items-center gap-2 text-sm hover:bg-[#185d4b]">
               <Plus size={16} /> Add Item
             </button>
           </div>

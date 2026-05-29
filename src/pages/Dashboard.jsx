@@ -28,7 +28,7 @@ const transactionData = [
 
 function Dashboard() {
   return (
-    <div className="bg-[#f6f8fa] min-h-screen p-6">
+    <div className="bg-[#f6f8fa] min-h-screen p-1">
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {kpiData.map((item, index) => (
           <KpiCard key={index} {...item} />

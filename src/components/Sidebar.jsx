@@ -13,7 +13,7 @@ function Sidebar() {
   const [isSalesOpen, setIsSalesOpen] = useState(false);
 
   const getLinkClass = ({ isActive }) => 
-    `flex items-center gap-4 p-2.5 rounded-md transition-colors font-semibold text-sm ${
+    `flex items-center gap-4 p-2.5 rounded transition-colors font-semibold text-sm ${
       isActive 
         ? "bg-green-50 text-green-600" 
         : "text-black hover:bg-gray-50 hover:text-green-600"
@@ -36,7 +36,7 @@ function Sidebar() {
         <div>
           <div 
             onClick={() => setIsSalesOpen(!isSalesOpen)}
-            className="flex items-center justify-between text-black hover:text-green-600 cursor-pointer p-2.5 rounded-md hover:bg-gray-50 transition-colors font-semibold text-sm"
+            className="flex items-center justify-between text-black hover:text-green-600 cursor-pointer p-2.5 rounded hover:bg-gray-50 transition-colors font-semibold text-sm"
           >
             <div className="flex items-center gap-4">
               <TrendingUp size={20} />

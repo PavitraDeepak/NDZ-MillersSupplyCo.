@@ -2,9 +2,9 @@ import { ArrowUpRight, ArrowDownRight } from "lucide-react";
 
 export function KpiCard({ title, amount, sub, icon: Icon, trend, isPositive, color, bg }) {
   return (
-    <div className="bg-white p-6 rounded-lg border border-gray-100 shadow-sm transition-all hover:shadow-md">
+    <div className="bg-white p-6 rounded border border-gray-100 shadow-sm transition-all hover:shadow-md">
       <div className="flex justify-between items-start">
-        <div className={`p-3 ${bg} rounded-lg ${color}`}>
+        <div className={`p-3 ${bg} rounded ${color}`}>
           <Icon size={24} />
         </div>
         <span className={`flex items-center text-sm font-medium ${isPositive ? 'text-green-500' : 'text-red-500'}`}>

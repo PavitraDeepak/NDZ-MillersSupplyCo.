@@ -3,7 +3,7 @@ const CustomTooltip = ({ active, payload, label }) => {
   if (active && payload && payload.length) {
     const data = payload[0].payload;
     return (
-      <div className="bg-white p-4 border border-gray-200 shadow-md rounded-lg text-sm min-w-[180px]">
+      <div className="bg-white p-4 border border-gray-200 shadow-md rounded text-sm min-w-[180px]">
         <p className="font-medium text-gray-500 mb-2">{label}</p>
         <p className="text-emerald-600 font-medium">Amount (₹) : <span className="font-bold">{data.amount.toLocaleString()}</span></p>
         <p className="text-orange-500 font-medium">Orders : <span className="font-bold">{data.orders}</span></p>
@@ -14,7 +14,7 @@ const CustomTooltip = ({ active, payload, label }) => {
 };
 export function SalesChart({ data }) {
   return (
-    <div className="bg-white p-6 rounded-lg border border-gray-100 shadow-sm">
+    <div className="bg-white p-6 rounded border border-gray-100 shadow-sm">
       <h3 className="font-bold text-gray-800 mb-6">Sales Trend</h3>
       <ResponsiveContainer width="100%" height={200}>
         <LineChart data={data} margin={{ top: 20, right: 30, left: 50, bottom: 5 }}>

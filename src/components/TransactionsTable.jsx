@@ -4,7 +4,7 @@ import { CircleCheckBig, Clock } from 'lucide-react';
 
 export function TransactionsTable({ data }) {
   return (
-    <div className="bg-white p-6 rounded-lg border border-gray-200 shadow-sm">
+    <div className="bg-white p-6 rounded border border-gray-200 shadow-sm">
       <h3 className="text-lg font-bold text-gray-800 mb-4">Recent Transactions</h3>
       <div className="overflow-x-auto">
         <table className="min-w-full divide-y divide-gray-200">
@@ -27,7 +27,7 @@ export function TransactionsTable({ data }) {
                 <td className="px-4 py-4 text-sm font-semibold text-gray-900">{txn.code}</td>
                 <td className="px-4 py-4 text-sm font-semibold text-gray-900">{txn.name}</td>
                 <td className="px-4 py-4 text-sm">
-                  <span className={`px-2.5 py-0.5 rounded-full text-[11px] font-semibold uppercase ${
+                  <span className={`px-2.5 py-0.5 rounded-ful text-[11px] font-semibold uppercase ${
                     txn.type === 'Purchase' ? 'bg-blue-50 text-blue-600' : 'bg-green-50 text-green-600'
                   }`}>
                     {txn.type}
@@ -46,7 +46,7 @@ export function TransactionsTable({ data }) {
                 </td>
                 <td className="px-4 py-4 text-sm text-gray-500">{txn.date}</td>
                 <td className="px-4 py-4 text-sm">
-                  <span className={`inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[11px] font-semibold uppercase ${
+                  <span className={`inline-flex items-center gap-1.5 px-2.5 py-1 rounded text-[11px] font-semibold uppercase ${
                     txn.status === 'Completed' ? 'bg-green-50 text-green-700' : 'bg-yellow-50 text-yellow-700'
                   }`}>
                     {txn.status === 'Completed' ? (
