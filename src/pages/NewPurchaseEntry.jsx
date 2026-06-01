@@ -108,7 +108,7 @@ function NewPurchaseEntry() {
             </div>
           </div>
 
-          <div className="flex flex-col gap-2 pt-4">
+          <div className="flex flex-col gap-2 -mt-4 p-6 pb-35">
             <button className="w-full py-2.5 flex items-center justify-center gap-2 border border-gray-200 rounded text-gray-700 hover:bg-gray-50 transition-colors">
               <Save size={18} /> Save as Draft
             </button>
@@ -118,7 +118,7 @@ function NewPurchaseEntry() {
           </div>
         </div>
 
-        <div className="col-span-12 bg-white p-6 rounded-xl border border-gray-200 shadow-sm">
+        <div className="col-span-12 bg-white p-6 rounded-xl border border-gray-200 shadow-sm">  
           <div className="flex justify-between items-center mb-6">
             <h3 className="font-bold text-lg">Item Details</h3>
             <button className="bg-[#1e715b] text-white px-4 py-2 rounded flex items-center gap-2 text-xlhover:bg-[#185d4b]">

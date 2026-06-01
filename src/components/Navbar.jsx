@@ -48,7 +48,7 @@ const subPageConfig = {
       <div className="flex items-center gap-6">
         <Bell size={24} className="text-gray-600 cursor-pointer" />
         <div className="flex items-center gap-3 cursor-pointer">
-          <div className="h-10 w-10 rounded bg-[#1e715b] text-white flex items-center justify-center font-semibold">J</div>
+          <div className="h-10 w-10 rounded-full bg-[#1e715b] text-white flex items-center justify-center font-semibold">J</div>
           <span className="text-gray-700 font-medium">John Smith</span>
           <ChevronDown size={16} className="text-gray-400" />
         </div>

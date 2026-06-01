@@ -1,13 +1,13 @@
 import { FileText, Box, DollarSign, Clock, Search, Filter, Plus } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 
-const SummaryCard = ({ title, value, icon, colorClass }) => (
+const SummaryCard = ({ title, value, sub, icon, colorClass }) => (
   <div className="bg-white p-5 rounded border border-gray-200 shadow-sm flex items-center justify-between flex-1">
     <div>
       <p className="text-xs text-gray-500 uppercase font-medium">{title}</p>
       <h3 className="text-2xl font-bold mt-1">{value}</h3>
+      <p className="text-[10px] text-gray-400 mt-0.5">{sub}</p>
     </div>
-    {/* Renders the icon directly as JSX */}
     <div className={`p-3 rounded ${colorClass}`}>
       {icon}
     </div>

@@ -82,10 +82,8 @@ function MaterialInEntry() {
           </div>
         </div>
 
-        {/* RIGHT: Order Summary */}
         <div className="col-span-12 lg:col-span-4 bg-white p-6 rounded border border-gray-200 shadow-sm flex flex-col justify-between">
           
-          {/* Top: summary content */}
           <div>
             <h3 className="font-bold text-lg mb-6">Order Summary</h3>
             <div className="space-y-1 mb-4 border-b border-gray-100 pb-4">
@@ -112,8 +110,7 @@ function MaterialInEntry() {
             </div>
           </div>
 
-          {/* Bottom: buttons always at bottom */}
-          <div className="flex flex-col gap-2 pt-4">
+         <div className="flex flex-col gap-2 pt-4 p-6 pb-40">
             <button className="w-full py-2.5 flex items-center justify-center gap-2 border border-gray-200 rounded text-gray-700 hover:bg-gray-50 transition-colors">
               <Save size={18} /> Save as Draft
             </button>
@@ -123,7 +120,6 @@ function MaterialInEntry() {
           </div>
         </div>
 
-        {/* BOTTOM: Item Details */}
         <div className="col-span-12 bg-white p-6 rounded border border-gray-200 shadow-sm">
           <div className="flex justify-between items-center mb-6">
             <h3 className="font-bold text-lg">Item Details</h3>
