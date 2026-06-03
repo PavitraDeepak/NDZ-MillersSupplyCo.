@@ -1,4 +1,5 @@
-import { Routes, Route } from 'react-router-dom';
+import { useState, useEffect } from 'react';
+import { Routes, Route, useNavigate } from 'react-router-dom';
 import Layout from './components/Layout';
 import Login from './pages/Login';
 import Dashboard from './pages/Dashboard';
@@ -8,8 +9,34 @@ import SalesIn from './pages/SalesIn';
 import SalesOut from './pages/SalesOut';
 import MaterialInEntry from './pages/MaterialInEntry';
 import MaterialOutEntry from './pages/MaterialOutEntry';
+import NotFound from './pages/NotFound';
+
 
 function App() {
+  const [loading, setLoading] = useState(true);
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    const verifySession = async () => {
+      try {
+        const response = await fetch('http://localhost:5000/api/refresh-token', {
+          credentials: 'include'
+        }); 
+        
+        if (response.ok) {
+          navigate('/dashboard');
+        }
+      } catch (err) {
+        console.log("No active session",err);
+      } finally {
+        setLoading(false);
+      }
+    };
+    verifySession();
+  }, [navigate]);
+
+  if (loading) return <div>Loading...</div>;
+
   return (
     <Routes>
       <Route path="/" element={<Login />} />
@@ -21,8 +48,8 @@ function App() {
         <Route path="/sales/out" element={<SalesOut />} /> 
         <Route path="/sales/in/new" element={<MaterialInEntry />} />
         <Route path="/sales/out/new" element={<MaterialOutEntry />} />
-
       </Route>
+      <Route path="*" element={<NotFound />} />
     </Routes>
   );
 }
