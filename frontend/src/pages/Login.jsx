@@ -18,13 +18,14 @@ function Login() {
       const response = await fetch('http://localhost:5000/api/login', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ email, password }),credentials: 'include'
+        body: JSON.stringify({ email, password, rememberMe }),
+        credentials: 'include'
       });
 
       const data = await response.json();
-
+      
       if (response.ok) {
-        navigate('/dashboard'); 
+        navigate('/dashboard', { replace: true }); 
       } else {
         setError(data.error || 'Invalid email or password');
       }
@@ -75,14 +76,14 @@ function Login() {
 
               <div className="w-full flex justify-between items-center mt-[2px] mb-8 text-[11px]">
                 <div className="flex items-center gap-[8px] text-[#7c8594]">
-                      <input 
-                        type="checkbox" 
-                        checked={rememberMe}
-                        onChange={(e) => setRememberMe(e.target.checked)}
-                        className="appearance-none w-[14px] h-[14px] border border-[#cfd8dc] rounded-[3px] bg-white cursor-pointer checked:bg-[#1d7c67] checked:border-[#1d7c67]"
-                      />
-                      <span>Remember me</span>
-                    </div>
+                  <input 
+                    type="checkbox" 
+                    checked={rememberMe}
+                    onChange={(e) => setRememberMe(e.target.checked)}
+                    className="appearance-none w-[14px] h-[14px] border border-[#cfd8dc] rounded-[3px] bg-white cursor-pointer checked:bg-[#1d7c67] checked:border-[#1d7c67]"
+                  />
+                  <span>Remember me</span>
+                </div>
                 <a href="/" className="text-[#7c8594] hover:underline">Forgot password?</a>
               </div>
 
@@ -93,12 +94,6 @@ function Login() {
               </button>
             </form>
           </div>
-        </div>
-
-        <div className="w-[450px] mt-[18px] flex justify-center">
-          <p className="text-[11px] text-[#8f98a3] text-center">
-            © 2026 Supplyco Wheat & Flour Mill ERP. All rights reserved.
-          </p>
         </div>
       </div>
     </div>

@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Routes, Route, useNavigate } from 'react-router-dom';
 import Layout from './components/Layout';
+import ProtectedRoute from './components/ProtectedRoute'; // Import your gatekeeper
 import Login from './pages/Login';
 import Dashboard from './pages/Dashboard';
 import Purchase from './pages/Purchase';
@@ -10,7 +11,6 @@ import SalesOut from './pages/SalesOut';
 import MaterialInEntry from './pages/MaterialInEntry';
 import MaterialOutEntry from './pages/MaterialOutEntry';
 import NotFound from './pages/NotFound';
-
 
 function App() {
   const [loading, setLoading] = useState(true);
@@ -27,7 +27,7 @@ function App() {
           navigate('/dashboard');
         }
       } catch (err) {
-        console.log("No active session",err);
+        console.log("No active session", err);
       } finally {
         setLoading(false);
       }
@@ -40,7 +40,11 @@ function App() {
   return (
     <Routes>
       <Route path="/" element={<Login />} />
-      <Route element={<Layout />}>
+      <Route element={
+        <ProtectedRoute>
+          <Layout />
+        </ProtectedRoute>
+      }>
         <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/purchase" element={<Purchase />} />
         <Route path="/purchase/new" element={<NewPurchaseEntry />} /> 
@@ -49,6 +53,7 @@ function App() {
         <Route path="/sales/in/new" element={<MaterialInEntry />} />
         <Route path="/sales/out/new" element={<MaterialOutEntry />} />
       </Route>
+
       <Route path="*" element={<NotFound />} />
     </Routes>
   );
