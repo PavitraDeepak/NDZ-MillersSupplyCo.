@@ -25,6 +25,7 @@ function Login() {
       const data = await response.json();
       
       if (response.ok) {
+        localStorage.setItem('accessToken', data.token);
         navigate('/dashboard', { replace: true }); 
       } else {
         setError(data.error || 'Invalid email or password');

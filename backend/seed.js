@@ -12,7 +12,6 @@ async function seed() {
         await client.connect();
         console.log("Connected to database");
 
-        // 1. Create table with the correct column name 'password'
         await client.query(`
             CREATE TABLE IF NOT EXISTS users (
                 id SERIAL PRIMARY KEY, 

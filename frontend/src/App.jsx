@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
-import { Routes, Route, useNavigate } from 'react-router-dom';
+import { Routes, Route, useNavigate, useLocation } from 'react-router-dom';
 import Layout from './components/Layout';
-import ProtectedRoute from './components/ProtectedRoute'; // Import your gatekeeper
+import ProtectedRoute from './components/ProtectedRoute';
 import Login from './pages/Login';
 import Dashboard from './pages/Dashboard';
 import Purchase from './pages/Purchase';
@@ -15,27 +15,38 @@ import NotFound from './pages/NotFound';
 function App() {
   const [loading, setLoading] = useState(true);
   const navigate = useNavigate();
+  const location = useLocation();
 
   useEffect(() => {
     const verifySession = async () => {
       try {
-        const response = await fetch('http://localhost:5000/api/refresh-token', {
-          credentials: 'include'
-        }); 
+        const response = await fetch('http://localhost:5000/api/refresh-token', { 
+            credentials: 'include' 
+        });
+        const data = await response.json();
         
-        if (response.ok) {
-          navigate('/dashboard');
+        if (data.authenticated) {
+          localStorage.setItem('accessToken', data.token);
+          if (location.pathname === '/') {
+            navigate('/dashboard', { replace: true });
+          }
+        } else {
+          localStorage.removeItem('accessToken');
+          if (location.pathname !== '/') {
+             navigate('/', { replace: true });
+          }
         }
       } catch (err) {
-        console.log("No active session", err);
+        console.error("Session verification failed", err);
       } finally {
         setLoading(false);
       }
     };
+    
     verifySession();
-  }, [navigate]);
+  }, [navigate, location.pathname]); // Added dependencies for stability
 
-  if (loading) return <div>Loading...</div>;
+  if (loading) return <div className="flex h-screen items-center justify-center">Loading...</div>;
 
   return (
     <Routes>
