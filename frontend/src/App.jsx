@@ -20,9 +20,12 @@ function App() {
   useEffect(() => {
     const verifySession = async () => {
       try {
-        const response = await fetch('http://localhost:5000/api/refresh-token', { 
-            credentials: 'include' 
+        const response = await fetch('/api/refresh-token', { 
+          credentials: 'include' 
         });
+        
+        if (!response.ok) throw new Error('Session check failed');
+        
         const data = await response.json();
         
         if (data.authenticated) {
@@ -32,30 +35,32 @@ function App() {
           }
         } else {
           localStorage.removeItem('accessToken');
+
           if (location.pathname !== '/') {
-             navigate('/', { replace: true });
+            navigate('/', { replace: true });
           }
         }
       } catch (err) {
-        console.error("Session verification failed", err);
+        console.error("Session verification error:", err);
+        localStorage.removeItem('accessToken');
+        if (location.pathname !== '/') navigate('/', { replace: true });
       } finally {
         setLoading(false);
       }
     };
     
     verifySession();
-  }, [navigate, location.pathname]); // Added dependencies for stability
+  }, []); 
 
-  if (loading) return <div className="flex h-screen items-center justify-center">Loading...</div>;
+  if (loading) {
+    return <div className="flex h-screen items-center justify-center text-lg font-semibold">Loading ERP System...</div>;
+  }
 
   return (
     <Routes>
       <Route path="/" element={<Login />} />
-      <Route element={
-        <ProtectedRoute>
-          <Layout />
-        </ProtectedRoute>
-      }>
+      
+      <Route element={<ProtectedRoute><Layout /></ProtectedRoute>}>
         <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/purchase" element={<Purchase />} />
         <Route path="/purchase/new" element={<NewPurchaseEntry />} /> 
