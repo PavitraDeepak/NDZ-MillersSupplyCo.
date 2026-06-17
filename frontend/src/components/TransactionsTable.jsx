@@ -1,11 +1,8 @@
-
-
 import { CircleCheckBig, Clock } from 'lucide-react';
 
 export function TransactionsTable({ data }) {
   return (
     <div className="bg-white p-6 rounded border border-gray-200 shadow-sm">
-      <h3 className="text-lg font-bold text-gray-800 mb-4">Recent Transactions</h3>
       <div className="overflow-x-auto">
         <table className="min-w-full divide-y divide-gray-200">
           <thead>
@@ -35,7 +32,7 @@ export function TransactionsTable({ data }) {
                 </td>
                 <td className="px-4 py-4 text-sm font-semibold text-gray-900">{txn.unit}</td>
                 <td className="px-4 py-4 text-sm font-semibold text-gray-900">{txn.branch}</td>
-                <td className="px-4 py-4 text-sm font-semibold text-gray-900">{txn.billQty}</td>
+                <td className="px-4 py-4 text-sm font-semibold text-gray-900">{txn.quantity}</td>
                 
                 <td className="px-4 py-4 text-sm font-bold text-gray-900">
                   {Number(txn.amount).toLocaleString('en-IN', {
@@ -44,7 +41,7 @@ export function TransactionsTable({ data }) {
                     minimumFractionDigits: 0
                   })}
                 </td>
-                <td className="px-4 py-4 text-sm text-gray-500">{txn.date}</td>
+                <td className="px-4 py-4 text-sm text-gray-500">{txn.transaction_date ? txn.transaction_date.split('T')[0] : 'N/A'}</td>
                 <td className="px-4 py-4 text-sm">
                   <span className={`inline-flex items-center gap-1.5 px-2.5 py-1 rounded text-[11px] font-semibold uppercase ${
                     txn.status === 'Completed' ? 'bg-green-50 text-green-700' : 'bg-yellow-50 text-yellow-700'

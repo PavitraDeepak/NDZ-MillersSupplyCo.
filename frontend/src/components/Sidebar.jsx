@@ -9,7 +9,7 @@ function Sidebar() {
   const location = useLocation();
   const navigate = useNavigate();
   
-  // Auto-open if the current path starts with /sales
+
   const [isSalesOpen, setIsSalesOpen] = useState(location.pathname.startsWith('/sales'));
 
   const getLinkClass = ({ isActive }) => 
@@ -40,7 +40,6 @@ function Sidebar() {
           <span>Purchase</span>
         </NavLink>
 
-        {/* Sales Menu */}
         <div>
           <div 
             onClick={() => setIsSalesOpen(!isSalesOpen)}
@@ -67,7 +66,6 @@ function Sidebar() {
         </div>
       </div>
 
-      {/* Logout Footer */}
       <div className="p-5 border-t border-gray-100">
         <button 
           onClick={handleLogout}

@@ -25,7 +25,6 @@ function Dashboard() {
   const formatCurrency = (val) => new Intl.NumberFormat('en-IN', { style: 'currency', currency: 'INR', maximumFractionDigits: 0 }).format(val);
   const formatQty = (val) => new Intl.NumberFormat('en-IN').format(val) + " MT";
 
-  // Dynamic KPI Card configuration
   const cards = [
     { title: "Today Purchase", amount: loading ? "..." : formatCurrency(metrics?.purchaseToday?.amount || 0), sub: loading ? "..." : `${metrics?.purchaseToday?.count || 0} orders`, icon: ShoppingCart, trend: "+12.5%", isPositive: true, color: "text-blue-600", bg: "bg-blue-50" },
     { title: "Sales Today", amount: loading ? "..." : formatCurrency(metrics?.salesToday?.amount || 0), sub: loading ? "..." : `${metrics?.salesToday?.count || 0} invoices`, icon: TrendingUp, trend: "+8.2%", isPositive: true, color: "text-green-600", bg: "bg-green-50" },
@@ -37,7 +36,6 @@ function Dashboard() {
 
   return (
     <div className="bg-[#f6f8fa] min-h-screen p-6">
-      {/* KPI Section */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {cards.map((item, index) => (
           <KpiCard key={index} {...item} />

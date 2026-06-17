@@ -29,6 +29,13 @@ const SummaryRow = ({ label, value, isGreen, isRed }) => (
   </div>
 );
 
+const calculateTotalQuantity=()=>{
+  return items.reduce((total, item) => total + Number(item.quantity || 0), 0);
+}
+
+const  submissionData = {
+
+};
 function NewPurchaseEntry() {
   const [selectedFile, setSelectedFile] = useState(null);
   const handleFileChange = (e) => { if (e.target.files) setSelectedFile(e.target.files[0]); };

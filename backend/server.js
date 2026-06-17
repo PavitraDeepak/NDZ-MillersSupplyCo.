@@ -35,6 +35,25 @@ app.post('/api/login', async (req, res) => {
   }
 });
 
+
+app.get('/api/refresh-token', (req, res) => {
+  const token = req.cookies.token;
+  if (!token) return res.json({ authenticated: false });
+  
+  try {
+    const decoded = jwt.verify(token, process.env.JWT_SECRET || 'secret');
+    const newToken = jwt.sign({ userId: decoded.userId }, process.env.JWT_SECRET || 'secret', { expiresIn: '1h' });
+    
+    res.cookie('token', newToken, { httpOnly: true, sameSite: 'lax', maxAge: 3600000 });
+    res.json({ authenticated: true, token: newToken });
+  } catch (err) { 
+    res.clearCookie('token'); 
+    res.json({ authenticated: false }); 
+  }
+});
+
+
+
 app.get('/api/kpi/dashboard-metrics', async (req, res) => {
   try {
     const targetDate = '2026-05-07'; 
@@ -53,22 +72,24 @@ app.get('/api/kpi/dashboard-metrics', async (req, res) => {
       pool.query(`SELECT * FROM transactions ORDER BY transaction_date DESC LIMIT 10`)
     ]);
 
+    const getSafeRow = (idx) => (results[idx].rows && results[idx].rows.length > 0 ? results[idx].rows[0] : { total: 0, count: 0 });
+
     res.json({
-      purchaseToday: { amount: Number(results[0].rows[0].total), count: Number(results[0].rows[0].count) },
-      salesToday: { amount: Number(results[1].rows[0].total), count: Number(results[1].rows[0].count) },
-      currentStock: { amount: Number(results[2].rows[0].total) },
-      pendingPayments: { amount: Number(results[3].rows[0].total), count: Number(results[3].rows[0].count) },
-      outstandingReceivables: { amount: Number(results[4].rows[0].total), count: Number(results[4].rows[0].count) },
-      dispatchPending: { amount: Number(results[5].rows[0].total), count: Number(results[5].rows[0].count) },
-      purchaseHistory: results[6].rows,
-      salesHistory: results[7].rows,
-      purchaseGrouped: results[8].rows,
-      salesGrouped: results[9].rows,
-      recentTransactions: results[10].rows
+      purchaseToday: { amount: Number(getSafeRow(0).total), count: Number(getSafeRow(0).count) },
+      salesToday: { amount: Number(getSafeRow(1).total), count: Number(getSafeRow(1).count) },
+      currentStock: { amount: Number(results[2].rows[0]?.total || 0) },
+      pendingPayments: { amount: Number(getSafeRow(3).total), count: Number(getSafeRow(3).count) },
+      outstandingReceivables: { amount: Number(getSafeRow(4).total), count: Number(getSafeRow(4).count) },
+      dispatchPending: { amount: Number(getSafeRow(5).total), count: Number(getSafeRow(5).count) },
+      purchaseHistory: results[6].rows || [],
+      salesHistory: results[7].rows || [],
+      purchaseGrouped: results[8].rows || [],
+      salesGrouped: results[9].rows || [],
+      recentTransactions: results[10].rows || []
     });
   } catch (err) {
     console.error("Dashboard Metrics Error:", err);
-    res.status(500).json({ error: 'Failed to fetch metrics' });
+    res.status(500).json({ error: 'Failed to fetch metrics', details: err.message });
   }
 });
 
